@@ -130,9 +130,9 @@ class Ghost:
 
     def move_out_of_box(self):
         if self.in_box:
-            self.direction = 3  # Move down to exit the box
+            self.direction = 3
             self.y_pos += self.speed
-            if self.y_pos >= 305 and (440 <= self.x_pos <= 460):  # Check if ghost has exited the box
+            if self.y_pos >= 305 and (440 <= self.x_pos <= 460):
                 self.in_box = False
 
 
@@ -224,7 +224,7 @@ class Ghost:
                 self.y_pos += self.speed
 
         def choose_new_direction():
-            if self.direction == 0:  # moving right
+            if self.direction == 0:
                 if self.target[0] > self.x_pos and can_turn_to_direction(0):
                     return 0
                 elif self.target[1] > self.y_pos and can_turn_to_direction(3):
@@ -239,7 +239,7 @@ class Ghost:
                     return 2
                 elif can_turn_to_direction(1):
                     return 1
-            elif self.direction == 1:  # moving left
+            elif self.direction == 1:
                 if self.target[0] < self.x_pos and can_turn_to_direction(1):
                     return 1
                 elif self.target[1] > self.y_pos and can_turn_to_direction(3):
@@ -254,7 +254,7 @@ class Ghost:
                     return 2
                 elif can_turn_to_direction(0):
                     return 0
-            elif self.direction == 2:  # moving up
+            elif self.direction == 2:
                 if self.target[1] < self.y_pos and can_turn_to_direction(2):
                     return 2
                 elif self.target[0] > self.x_pos and can_turn_to_direction(0):
@@ -269,7 +269,7 @@ class Ghost:
                     return 1
                 elif can_turn_to_direction(3):
                     return 3
-            elif self.direction == 3:  # moving down
+            elif self.direction == 3:
                 if self.target[1] > self.y_pos and can_turn_to_direction(3):
                     return 3
                 elif self.target[0] > self.x_pos and can_turn_to_direction(0):
@@ -390,9 +390,9 @@ class Ghost:
 
         def choose_vertical_direction():
             if self.target[1] > self.y_pos and can_turn_to_direction(3):
-                return 3  # down
+                return 3
             elif self.target[1] < self.y_pos and can_turn_to_direction(2):
-                return 2  # up
+                return 2
             return self.direction
 
         def choose_horizontal_direction():
@@ -451,7 +451,7 @@ class Ghost:
                 self.y_pos += self.speed
 
         def choose_new_direction():
-            if self.direction == 0:  # right
+            if self.direction == 0:
                 if self.target[1] > self.y_pos and can_turn_to_direction(3):
                     return 3
                 elif self.target[1] < self.y_pos and can_turn_to_direction(2):
@@ -849,12 +849,12 @@ while run:
 
         handle_projectiles()
 
-        respawn_ghosts()  # Вызов функции возрождения призраков
+        respawn_ghosts()
 
         if lives <= 0:
             game_over = True
 
-        # Check for victory: if all dots (1 and 2) are eaten, then victory
+
         if all(level[row][col] != 1 and level[row][col] != 2 for row in range(len(level)) for col in range(len(level[row]))):
             victory = True
 
@@ -902,7 +902,7 @@ while run:
                 run = False
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
-                    run = False  # Exit the game when SPACE is pressed
+                    run = False
     elif victory:
         show_victory(score)
         for event in pygame.event.get():
@@ -910,6 +910,6 @@ while run:
                 run = False
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
-                    run = False  # Exit the game when SPACE is pressed
+                    run = False
 
 pygame.quit()
